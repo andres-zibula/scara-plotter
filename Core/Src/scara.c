@@ -75,10 +75,10 @@ void go_to(double x, double y)
     return;
 
   double D1 = atan2(y, x);
-  double D2 = cosine_anggle_rule(pitagoras(x, y), ARM_LEN_2, ARM_LEN_1);
+  double D2 = cosine_angle_rule(pitagoras(x, y), ARM_LEN_2, ARM_LEN_1);
 
   double A1 = D1 + D2;
-  double A2 = cosine_anggle_rule(ARM_LEN_2, pitagoras(x, y), ARM_LEN_1);
+  double A2 = cosine_angle_rule(ARM_LEN_2, pitagoras(x, y), ARM_LEN_1);
 
   double m1_angle = rad_to_deg(A1);
   double m2_angle = rad_to_deg(A2);
@@ -90,19 +90,23 @@ void go_to(double x, double y)
       if (m1_angle > m1_actual_angle)
       {
         HAL_GPIO_WritePin(GPIOB, M1_DIR_Pin, GPIO_PIN_SET);
+        HAL_GPIO_WritePin(GPIOB, M2_DIR_Pin, GPIO_PIN_SET);
         m1_actual_angle += step_increment;
       }
       else
       {
         HAL_GPIO_WritePin(GPIOB, M1_DIR_Pin, GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(GPIOB, M2_DIR_Pin, GPIO_PIN_RESET);
         m1_actual_angle -= step_increment;
       }
 
       delay_us(DIR_TOGGLE_DELAY_MS);
 
       HAL_GPIO_WritePin(GPIOB, M1_STEP_Pin, GPIO_PIN_SET);
+      HAL_GPIO_WritePin(GPIOB, M2_STEP_Pin, GPIO_PIN_SET);
       delay_us(STEP_TOGGLE_DELAY_MS);
       HAL_GPIO_WritePin(GPIOB, M1_STEP_Pin, GPIO_PIN_RESET);
+      HAL_GPIO_WritePin(GPIOB, M2_STEP_Pin, GPIO_PIN_RESET);
     }
   
     if (!equal_angles(m2_angle, m2_actual_angle))
