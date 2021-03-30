@@ -11,7 +11,7 @@ bool lifted = true;
 double actual_x = .0;
 double actual_y = .0;
 double m1_actual_angle = 90.0;
-double m2_actual_angle = 90.0;
+double m2_actual_angle = 180.0;
 double step_increment = STEP_ANGLE/(REDUCTION_RATIO_DIV*MICRO_STEPPING_DIV);
 
 bool equal_angles(double a, double b)
@@ -74,28 +74,14 @@ void go_to(double x, double y)
   if (actual_x == x && actual_y == y)
     return;
 
-  double L4 = cosine_side_rule(M_PI - M_PI/4.0, ARM_LEN_2, ARM_LEN_3);
-  double epsilon = cosine_angle_rule(L4, ARM_LEN_2, ARM_LEN_3);
-  double d3 = pitagoras(M2_POS_X - x, y - M2_POS_Y);
-  double theta2 = atan2(y, (M2_POS_X - x)) + cosine_angle_rule(d3, L4, ARM_LEN_1);
-  //double debatan1 = atan2(y, (M2_POS_X - x));
-  //double debcosin1 = cosine_angle_rule(d3, L4, ARM_LEN_1);
-  
-  double x4 = M2_POS_X + ARM_LEN_1*cos(M_PI - theta2);
-  double y4 = M2_POS_Y + ARM_LEN_1*sin(M_PI - theta2);
-  
-  double delta = atan2((x4-x), (y-y4));
-  
-  double x1 = x + ARM_LEN_3*sin(delta-epsilon);
-  double y1 = y - ARM_LEN_3*cos(delta-epsilon);
-  
-  double d1 = pitagoras(x1 - M1_POS_X, y1 - M1_POS_Y);
-  double theta1 = atan2((y1 - M1_POS_Y), (x1 - M1_POS_X)) + cosine_angle_rule(d1, ARM_LEN_2, ARM_LEN_1);
-  //double debatan2 = atan2((y1 - M1_POS_Y), (x1 - M1_POS_X));
-  //double debcosin2 = cosine_angle_rule(d1, ARM_LEN_2, ARM_LEN_1);
+  double D1 = atan2(y, x);
+  double D2 = cosine_anggle_rule(pitagoras(x, y), ARM_LEN_2, ARM_LEN_1);
 
-  double m1_angle = rad_to_deg(theta1);
-  double m2_angle = rad_to_deg(M_PI - theta2);
+  double A1 = D1 + D2;
+  double A2 = cosine_anggle_rule(ARM_LEN_2, pitagoras(x, y), ARM_LEN_1);
+
+  double m1_angle = rad_to_deg(A1);
+  double m2_angle = rad_to_deg(A2);
    
   while (!equal_angles(m1_angle, m1_actual_angle) || !equal_angles(m2_angle, m2_actual_angle))
   {

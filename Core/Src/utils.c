@@ -51,4 +51,3 @@ double pitagoras(double b, double c)
 {
   return sqrt(b*b + c*c);
 }
-

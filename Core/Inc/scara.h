@@ -14,12 +14,8 @@
 #define M1_POS_X .0
 #define M1_POS_Y .0
 
-#define M2_POS_X 100.0
-#define M2_POS_Y .0
-
-#define ARM_LEN_1 160.0
-#define ARM_LEN_2 200.0
-#define ARM_LEN_3 80.0
+#define ARM_LEN_1 150.0
+#define ARM_LEN_2 190.0
 
 #define LIFTED_ANGLE 60
 #define BASE_ANGLE 100

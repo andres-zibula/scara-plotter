@@ -31,5 +31,4 @@ double pitagoras(double, double);
 
 
 
-
 #endif /* INC_UTILS_H_ */
