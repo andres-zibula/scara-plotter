@@ -106,10 +106,16 @@ int main(void)
   {
     lift();
 
-    HAL_Delay(5000);
+    HAL_Delay(1000);
+
+    go_to(0, 230);
+
+    HAL_Delay(1000);
+
+    go_to(0, 270);
 
 
-    draw_line(-75.0, 250.0, 175.0, 250.0, true);
+    /*draw_line(-75.0, 250.0, 175.0, 250.0, true);
     draw_line(175.0, 250.0, 175.0, 380.0, true);
     draw_line(175.0, 380.0, -75.0, 380.0, true);
     draw_line(-75.0, 380.0, -75.0, 250.0, false);
@@ -128,7 +134,7 @@ int main(void)
     draw_circle(50.0, 315.0, 50.0);
     draw_circle(50.0, 315.0, 40.0);
 
-    HAL_Delay(30000);
+    HAL_Delay(30000);*/
 
 
     /* USER CODE END WHILE */
