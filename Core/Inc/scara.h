@@ -17,8 +17,8 @@
 #define ARM_LEN_1 150.0
 #define ARM_LEN_2 190.0
 
-#define LIFTED_ANGLE 60
-#define BASE_ANGLE 100
+#define LIFTED_ANGLE 80
+#define BASE_ANGLE 120
 #define LIFT_DELAY 500
 
 #define STEPS_PER_MM 4.0
