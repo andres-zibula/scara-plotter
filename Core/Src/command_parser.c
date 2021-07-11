@@ -13,7 +13,7 @@ void parse_line(char* line, uint8_t len)
     switch (line[0])
     {
     case 'G':
-        switch (line[2])
+        switch (line[1])
         {
         case '1':
             //line
@@ -21,7 +21,20 @@ void parse_line(char* line, uint8_t len)
             double y = parse_code('Y', line, len);
             draw_line(actual_x, actual_y, x, y, true);
             break;
-        
+        default:
+            break;
+        }
+        break;
+    
+    case 'Z':
+        switch (line[1])
+        {
+        case '1':
+            lift();
+            break;
+        case '0':
+            put_down();
+            break;
         default:
             break;
         }

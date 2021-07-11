@@ -40,6 +40,7 @@ extern "C" {
 
 #include "utils.h"
 #include "scara.h"
+#include "command_parser.h"
 
 /* USER CODE END Includes */
 

@@ -73,7 +73,7 @@ static void MX_USART1_UART_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  uint8_t uart_buffer[80] = {0};
+  uint8_t uart_buffer[40] = {0};
 
   /* USER CODE END 1 */
 
@@ -103,6 +103,9 @@ int main(void)
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
   HAL_TIM_Base_Start(&htim3);
 
+  lift();
+  go_to(0, 200);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -113,6 +116,7 @@ int main(void)
     HAL_UART_Receive (&huart1, uart_buffer, sizeof(uart_buffer), HAL_MAX_DELAY);
 
     //procesar
+    parse_line(uart_buffer, sizeof(uart_buffer));
 
 
     HAL_UART_Transmit(&huart1, "OK\n", 3, HAL_MAX_DELAY);
@@ -122,7 +126,7 @@ int main(void)
 
     //lift();
 
-    HAL_Delay(1000);
+    //HAL_Delay(1000);
 
     //go_to(0, 230);
     //put_down();
