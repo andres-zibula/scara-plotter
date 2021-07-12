@@ -6,6 +6,8 @@ with open('commands.tap') as f:
     commands = f.readlines()
 
 for command in commands:
+    command = command.strip()
+    command = command + ";"
     print("sending: " + command)
     command = command.ljust(40, '0')
     command = str.encode(command)

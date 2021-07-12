@@ -132,5 +132,8 @@ void go_to(double x, double y)
     //HAL_Delay(STEP_DELAY);
     delay_us(STEP_DELAY_MS);
   }
+
+  actual_x = x;
+  actual_y = y;
   
 }

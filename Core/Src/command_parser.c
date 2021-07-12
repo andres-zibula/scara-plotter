@@ -7,7 +7,7 @@
 
 #include "command_parser.h"
 
-void parse_line(char* line, uint8_t len)
+void parse_line(char *line, uint8_t len)
 {
     uint8_t i = 0;
     switch (line[0])
@@ -16,16 +16,17 @@ void parse_line(char* line, uint8_t len)
         switch (line[1])
         {
         case '1':
-            //line
+        {
             double x = parse_code('X', line, len);
             double y = parse_code('Y', line, len);
             draw_line(actual_x, actual_y, x, y, true);
-            break;
+        }
+        break;
         default:
             break;
         }
         break;
-    
+
     case 'Z':
         switch (line[1])
         {
@@ -39,13 +40,13 @@ void parse_line(char* line, uint8_t len)
             break;
         }
         break;
-    
+
     default:
         break;
     }
 }
 
-double parse_code(char code, char* line, uint8_t len)
+double parse_code(char code, char *line, uint8_t len)
 {
     uint8_t i = 0;
 

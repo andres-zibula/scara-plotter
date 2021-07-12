@@ -11,6 +11,7 @@
 #include "main.h"
 #include "math.h"
 #include "stdbool.h"
+#include "stdlib.h"
 
 void parse_line(char* line, uint8_t len);
 double parse_code(char code, char* line, uint8_t len);
