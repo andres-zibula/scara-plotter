@@ -29,28 +29,27 @@ void lift()
 void put_down()
 {
   lifted = false;
-  servo_write(htim, BASE_ANGLE);
-  HAL_Delay(LIFT_DELAY);
+  for (uint8_t i = LIFTED_ANGLE + 10; i <= BASE_ANGLE; i = i + 10)
+  {
+    servo_write(htim, i);
+    HAL_Delay(120);
+  }
+    
+  //HAL_Delay(LIFT_DELAY);
 }
 
-void draw_line(double x1, double y1, double x2, double y2, bool without_lifting)
+void draw_line(double x1, double y1, double x2, double y2)
 {
   go_to(x1, y1);
-
-  if(lifted)
-    put_down();
   
   double dx = x2 - x1;
   double dy = y2 - y1;  
   uint16_t c = round(STEPS_PER_MM * sqrt(dx*dx + dy*dy));
   
-  for(int i = 0; i <= c; i++)
+  for(int i = 0; i < c; i++)
   {
     go_to(x1 + i*dx/c, y1 + i*dy/c);
   }
-
-  if(!without_lifting)
-    lift();
 }
 
 void draw_circle(double x, double y, double radius)
