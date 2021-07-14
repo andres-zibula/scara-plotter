@@ -19,7 +19,7 @@ void parse_line(char *line, uint8_t len)
         {
             double x = parse_code('X', line, len);
             double y = parse_code('Y', line, len);
-            draw_line(actual_x, actual_y, x, y, true);
+            draw_line(actual_x, actual_y, x, y);
         }
         break;
         default:
