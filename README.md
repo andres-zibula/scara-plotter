@@ -1,14 +1,17 @@
-# Parallel SCARA Plotter v3
+# SCARA Plotter
 
-Third version of my plotter, this one using stepper motors and STM32.
+One arm SCARA plotter, using stepper motors and STM32.
+
+This project consist of a STM32 firmware that interprets G-code coming from Serial port and moves the arm using the stepper motors, and a python script that reads a G-code file from the PC and sends the instructions via Serial to the STM32.
 
 Youtube demo:
 
-[![Parallel SCARA Plotter v3](https://img.youtube.com/vi/4yyozFsPI_I/0.jpg)](https://youtu.be/4yyozFsPI_I)
+[![SCARA Plotter](https://img.youtube.com/vi/raUs05iYUmI/0.jpg)](https://youtu.be/raUs05iYUmI)
 
 
+This repo includes code and STL files.
 
-
-For a better understanding of the code take a look at the following image:
-
-![](https://github.com/andres-zibula/project-images/blob/master/parallel_scara_stylus/parallel_scara_stylus.jpeg)
+Files and directories description:
+- command_sender.py: reads the G-code file commands.tap and sends it via Serial port.
+- Core: STM32 code.
+- STL files: 3D printing models.
